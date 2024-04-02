@@ -50,7 +50,8 @@ pip install -r requirements.txt
 Usage
 Run the application:
 ```bash
-python run.py
+python3 run.py #development run
+uwsgi --http 127.0.0.1:8000 --master -p 4 -w app:app #production run
 ```
 Access the search engine interface via your web browser at http://127.0.0.1:5000.
 
