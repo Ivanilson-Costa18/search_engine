@@ -1,10 +1,10 @@
-from flask import Flask
-
-app = Flask(__name__)
-
 import nltk
+from flask import Flask
+from app import routes
+
 nltk.download('punkt')
 nltk.download('stopwords')
 
-from app import routes
+app = Flask(__name__)
+
 
