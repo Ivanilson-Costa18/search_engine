@@ -1,0 +1,114 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ query }} • Search App</title>
+    <link rel="stylesheet" href="../static/search.css">
+</head>
+
+<body>
+    <header>
+        <div class="searchbar-wrapper">
+            <a id="logo" href="/">
+                <img src="../static/qmul.png" alt="Search logo" class="logo" title="Search App">
+            </a>
+            <div class="searchform-container">
+                <form id="searchform" method="GET" action="/search">
+                    <input type="text" name="q" id="searchbox" class="font" placeholder="Search for recipes..."
+                        autofocus="" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
+                        aria-label="Search" title="Search" maxlength="2048" enterkeyhint="search" value="{{query}}"
+                        required>
+                    <div class="searchform-actions">
+                        <button id="clear-query-button" type="reset" class="searchform-actions-button"
+                            aria-label="Clear">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M5.287 5.287a.85.85 0 0 0 0 1.202L10.797 12l-5.51 5.511a.85.85 0 0 0 1.202 1.202L12 13.203l5.51 5.51a.85.85 0 0 0 1.202-1.203L13.202 12l5.51-5.51a.85.85 0 0 0-1.202-1.202L12 10.798 6.489 5.287a.85.85 0 0 0-1.202 0"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <div class="clear-query-devider"></div>
+                        <button id="submit-button" class="searchform-actions-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M10.498 2a8.498 8.498 0 1 0 5.843 14.67l4.292 4.291a.8.8 0 1 0 1.131-1.13l-4.367-4.368A8.498 8.498 0 0 0 10.499 2M3.6 10.498a6.898 6.898 0 1 1 13.797 0 6.898 6.898 0 0 1-13.797 0"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <nav class="tabs">
+            <ul class="primary-tabs">
+                <li class="tab-item active">
+                    <a href="/search?q={{ query }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon"
+                        viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M10.498 2a8.498 8.498 0 1 0 5.843 14.67l4.292 4.291a.8.8 0 1 0 1.131-1.13l-4.367-4.368A8.498 8.498 0 0 0 10.499 2M3.6 10.498a6.898 6.898 0 1 1 13.797 0 6.898 6.898 0 0 1-13.797 0"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                        <span>All</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="results-stats">
+            <p> Found {{ results.total_results}} results ({{results.time }}s)</p>
+        </div>
+        <div class="resultscontainer">
+            {% if results.total_results > 0 %}
+            {% for result in results.results %}
+            <div class="searchresult-entry">
+                <a class="entry-title">
+                    <div class="page-title">{{ result.title }}</div>
+                </a>
+                <div class="snippet-content">
+                    <div class="snippet-description">
+                        <span>{{ result.content | safe }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="bad-results-container">
+                <section id="bad-results-info-banner" class="snippet-description">
+                    <span>Not many great matches came back for your search:
+                        <span class="desktop-default-semibold t-primary">"{{ query }}"</span></span>
+                    <ul class="t-tertiary svelte-1oelhgc">
+                        <li>Try more general keywords</li>
+                        <li>Try fewer keywords</li>
+                    </ul>
+                </section>
+                <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 32 32" id="DataNotFound" class="notfound-icon">
+                    <path fill="none" stroke="#9aa0a6" stroke-linecap="round" stroke-linejoin="round"
+                        d="M23.5,27.5H6.5l-1-15.19a.76.76,0,0,1,.77-.81H10a1.11,1.11,0,0,1,.89.44l1.22,1.56H23.5v2"
+                        class="colorStroke29abe2 svgStroke"></path>
+                    <path fill="none" stroke="#9aa0a6" stroke-linecap="round" stroke-linejoin="round"
+                        d="M26.3,20.7l.84-3.2H9.25L6.5,27.5H23.41a1.42,1.42,0,0,0,1.37-1.06l.76-2.88"
+                        class="colorStroke29abe2 svgStroke"></path>
+                    <path fill="none" stroke="#9aa0a6" stroke-linecap="round" stroke-linejoin="round"
+                        d="M16.5,24.5h0a1.42,1.42,0,0,1,2,0h0" class="colorStroke29abe2 svgStroke"></path>
+                    <line x1="13.5" x2="14.5" y1="21.5" y2="21.5" fill="none" stroke="#9aa0a6" stroke-linecap="round"
+                        stroke-linejoin="round" class="colorStroke29abe2 svgStroke"></line>
+                    <line x1="20.5" x2="21.5" y1="21.5" y2="21.5" fill="none" stroke="#9aa0a6" stroke-linecap="round"
+                        stroke-linejoin="round" class="colorStroke29abe2 svgStroke"></line>
+                    <path fill="none" stroke="#9aa0a6" stroke-linecap="round" stroke-linejoin="round"
+                        d="M20.62,3.61C18.25,4,16.5,5.37,16.5,7a2.57,2.57,0,0,0,.7,1.7l-.7,2.8,2.86-1.43A8.12,8.12,0,0,0,22,10.5c3,0,5.5-1.57,5.5-3.5,0-1.6-1.69-2.95-4-3.37"
+                        class="colorStroke29abe2 svgStroke"></path>
+                    <line x1="21.25" x2="22.75" y1="6.25" y2="7.75" fill="none" stroke="#9aa0a6" stroke-linecap="round"
+                        stroke-linejoin="round" class="colorStroke29abe2 svgStroke"></line>
+                    <line x1="22.75" x2="21.25" y1="6.25" y2="7.75" fill="none" stroke="#9aa0a6" stroke-linecap="round"
+                        stroke-linejoin="round" class="colorStroke29abe2 svgStroke"></line>
+                </svg>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+</body>

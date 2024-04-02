@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search App</title>
+    <link rel="stylesheet" href="../static/home.css">
+</head>
+<body>
+    <div class="home-wrapper">
+        <main>
+            <div class="searchbar-wrapper">
+                <a id="logo" href="/">
+                    <img src="../static/qmul.png" alt="Search logo" class="logo" title="Search App">
+                    <p>Search Engine</p>
+                </a>
+                <div class="searchform-container">
+                    <form id="searchform" method="GET" action="/search">
+                        <input type="text" name="q" id="searchbox" class="font" placeholder="Search for recipes..." 
+                        autofocus="" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
+                        aria-label="Search" title="Search" maxlength="2048" enterkeyhint="search" required>
+                        <div class="searchform-actions">
+                            <button id="clear-query-button" type="reset" class="searchform-actions-button" aria-label="Clear">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M5.287 5.287a.85.85 0 0 0 0 1.202L10.797 12l-5.51 5.511a.85.85 0 0 0 1.202 1.202L12 13.203l5.51 5.51a.85.85 0 0 0 1.202-1.203L13.202 12l5.51-5.51a.85.85 0 0 0-1.202-1.202L12 10.798 6.489 5.287a.85.85 0 0 0-1.202 0" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <div class="clear-query-devider"></div>
+                            <button id="submit-button" class="searchform-actions-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M10.498 2a8.498 8.498 0 1 0 5.843 14.67l4.292 4.291a.8.8 0 1 0 1.131-1.13l-4.367-4.368A8.498 8.498 0 0 0 10.499 2M3.6 10.498a6.898 6.898 0 1 1 13.797 0 6.898 6.898 0 0 1-13.797 0" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- <script>
+        document.getElementById("search-input").addEventListener('keypress', e => {
+            if(e.keyCode === 13){
+                window.location.href = `/search?q=${e.target.value}`
+            }
+        })
+    </script> -->
+</body>
