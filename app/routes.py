@@ -1,7 +1,7 @@
 
 import time
 from app import app
-from app.utils import prepare_results
+from app.utils import prepare_results, get_suggestions_from_titles
 from flask import request, render_template, redirect
 
 @app.route('/')
@@ -14,6 +14,25 @@ def landing():
     """
     return render_template('home.html')
 
+@app.route("/suggestions")
+def get_suggestions():
+    """
+    Return title suggestions based on the query parameter.
+
+    Query parameter:
+        q (str): Query string used for filtering titles.
+
+    Returns:
+        dict: A dictionary containing a list of title suggestions.
+    """
+    query = request.args.get('q')
+
+    app.logger.debug(f'Finding suggestion for "{query}".')
+
+    results = get_suggestions_from_titles(query.lower())
+
+    return results
+
 @app.route('/search')
 def search():
     """
@@ -24,6 +43,9 @@ def search():
     logs the query for debugging purposes, measures the time taken to retrieve and
     format search results, and renders the 'search.html' template with the query and
     formatted search results.
+
+    Query parameter:
+        q (str): Query string used for searching.
 
     Returns:
         str: The rendered HTML content of the search results page.

@@ -15,7 +15,7 @@ body{
 }
 
 main{
-    margin: 10% 0;
+    padding: 12% 0;
     height: 100%;
     width: 100%;
 }
@@ -34,6 +34,7 @@ main{
     z-index: 1;
     height: 50%;
     width: 40%;
+    margin-top: -2rem;
 }
 
 .logo{
@@ -57,6 +58,10 @@ main{
     max-width: inherit;
     position: relative;
     width: 100%;
+}
+
+#searchform.autocomplete-active{
+    border-radius: 16px 16px 0 0;
 }
 
 #searchbox{
@@ -149,4 +154,86 @@ a{
 
 p{
     margin: 0;
+}
+
+#autocomplete{
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    outline: 1px solid #30393d;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, .8) , 0px 1px 0px 0px rgba(255, 255, 255, .15);
+}
+
+
+.suggestions{
+    display: block;
+    background-color: #242731;
+    border-radius: 0 0 16px 16px;
+    padding-bottom: .7rem;
+}
+
+.suggestion{
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: start;
+    font-size: .9rem;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -.2px;
+    line-height: 1.3rem;
+    padding: .2rem .4rem;
+    color: #f3f5f7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.suggestion-wrapper{
+    align-items: center;
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    width: 100%;
+    height: 3rem;
+}
+
+.icon-wrapper{
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    margin-right: .4rem;
+    padding: .3rem;
+    align-items: center;
+    fill: #f3f5f7;
+}
+
+.suggestion:hover{
+    cursor: pointer;
+    background: #17191e;
+}
+
+.waves{
+    z-index: -1;
+    position: absolute;
+    background-image: url('./waves.svg');
+    background-repeat: no-repeat;
+    background-size: 150% 100%;
+    width: 100%;
+    height: 25%;
+    opacity: .3;
+}
+
+.top-wave{
+    transform: scale(-1, -1);
+    background-position: left bottom;
+}
+
+.bottom-wave{
+    bottom: 0;
+    background-position: left bottom;
 }

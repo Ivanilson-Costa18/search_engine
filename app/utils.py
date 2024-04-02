@@ -117,6 +117,7 @@ def prepare_results(query):
         score = result[1]
         title = doc['title']
         content = doc['content']
+        url = doc['url']
 
         snippet_length = 300
         query_terms = preprocess_query(query)
@@ -130,6 +131,7 @@ def prepare_results(query):
         formatted_result = {
             "title": title,
             "content": highlighted_content,
+            "url": url,
             "score": score
         }
         formatted_results.append(formatted_result)
@@ -140,3 +142,24 @@ def prepare_results(query):
         "results": formatted_results
     }
     return response_data
+
+def get_suggestions_from_titles(query):
+    """
+    Retrieve title suggestions based on a query.
+
+    Args:
+        query (str): Query string used for filtering.
+
+    Returns:
+        dict: Dictionary with a list of title suggestions.
+    """
+    from app.documents import documents
+    results = {}
+
+    if query == "":
+        results['suggestions'] = []
+        return results
+    
+    matches = [doc['title'] for doc in documents if doc["title"].lower().startswith(query)]
+    results['suggestions'] = matches[:6]
+    return results

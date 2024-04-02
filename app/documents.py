@@ -2,541 +2,330 @@ from app.utils import build_inverted_index
 
 documents = [
     {
-        "title": "Spaghetti Carbonara",
-        "content": "1. Cook spaghetti according to package instructions. In a separate pan, cook diced pancetta until crispy. Mix cooked spaghetti with beaten eggs, grated Parmesan cheese, and cooked pancetta. Serve immediately with additional cheese and black pepper."
+        "title": "Allrecipes",
+        "content": "Find a vast collection of recipes searchable by cuisine, ingredients, meal type, and dietary needs. Offers step-by-step instructions, user reviews, and nutritional information.",
+        "url": "https://www.allrecipes.com/recipes/"
     },
     {
-        "title": "Chicken Alfredo",
-        "content": "1. Cook fettuccine according to package instructions. In a pan, cook diced chicken until no longer pink. Add heavy cream and Parmesan cheese to the pan, simmer until thickened. Toss cooked fettuccine with the sauce. Serve hot."
+        "title": "American Council on Exercise (ACE)",
+        "content": "Discover evidence-based workout routines, fitness tips, and healthy meal plans for all levels. Provides personalized recommendations and training programs.",
+        "url": "https://www.acefitness.org/"
     },
     {
-        "title": "Vegetable Stir-Fry",
-        "content": "1. Heat oil in a wok or skillet. Add chopped vegetables (such as bell peppers, broccoli, carrots, and snap peas) and stir-fry until tender-crisp. Season with soy sauce, garlic, and ginger. Serve over cooked rice or noodles."
+        "title": "BBC News - World Politics",
+        "content": "Stay informed with in-depth coverage of politics, national and international news. Offers analysis from a variety of perspectives, along with multimedia content and podcasts.",
+        "url": "https://www.bbc.com/news/world/politics"
     },
     {
-        "title": "Football News",
-        "content": "Latest updates, scores, and highlights from the world of football."
+        "title": "Forever 21",
+        "content": "Shop a wide variety of trendy and affordable clothing and accessories for men, women, and children. Offers free shipping and returns on many items.",
+        "url": "https://www.forever21.com/"
     },
     {
-        "title": "Movie Reviews",
-        "content": "Reviews, ratings, and news about the latest movies and upcoming releases."
+        "title": "B&H Photo Video",
+        "content": "Explore a vast selection of electronics, appliances, and video games. Provides detailed product information, customer reviews, and educational buying guides.",
+        "url": "https://www.bhphotovideo.com/"
     },
     {
-        "title": "Celebrity Gossip",
-        "content": "Get the latest scoop on celebrities, Hollywood news, and entertainment gossip."
+        "title": "Lonely Planet",
+        "content": "Find inspiration and plan your next trip. Offers travel guides, hotel and flight deals, user reviews, and destination recommendations.",
+        "url": "https://www.lonelyplanet.com/"
     },
     {
-        "title": "Tech News",
-        "content": "Stay updated with the latest in technology news, gadgets, and innovations."
+        "title": "Investopedia",
+        "content": "Stay informed about personal finance, investing, and the economy. Offers news articles, educational resources, and financial tools.",
+        "url": "https://www.investopedia.com/"
     },
     {
-        "title": "World News",
-        "content": "Breaking news, analysis, and coverage from around the globe."
+        "title": "BBC News",
+        "url": "https://www.bbc.com/news",
+        "content": "Global news coverage from the BBC.",
     },
     {
-        "title": "Weather Updates",
-        "content": "Current weather conditions, forecasts, and alerts for your area."
+        "title": "The New York Times",
+        "url": "https://www.nytimes.com",
+        "content": "International news with a focus on US affairs.",
     },
     {
-        "title": "Health Tips",
-        "content": "Advice, tips, and information to maintain a healthy lifestyle."
+        "title": "Khan Academy",
+        "url": "https://www.khanacademy.org",
+        "content": "Free online educational resources.",
     },
     {
-        "title": "Travel Destinations",
-        "content": "Explore the best travel destinations, attractions, and vacation ideas."
+        "title": "GitHub",
+        "url": "https://github.com",
+        "content": "Version control platform for software development.",
     },
     {
-        "title": "Financial News",
-        "content": "Latest updates, trends, and analysis from the world of finance and business."
+        "title": "Imgur",
+        "url": "https://imgur.com",
+        "content": "Image hosting and sharing platform.",
     },
     {
-        "title": "Recipes for Healthy Living",
-        "content": "Discover nutritious and delicious recipes to help you lead a healthy lifestyle."
+        "title": "Wikipedia",
+        "url": "https://en.wikipedia.org",
+        "content": "Free online encyclopedia.",
     },
     {
-        "title": "Basketball Scores",
-        "content": "Find out the latest scores, standings, and updates from the world of basketball."
+        "title": "Spotify",
+        "url": "https://www.spotify.com",
+        "content": "Music streaming service.",
     },
     {
-        "title": "Book Reviews",
-        "content": "Get recommendations and reviews for the best books across various genres."
+        "title": "Stack Overflow",
+        "url": "https://stackoverflow.com",
+        "content": "Programming Q&A website.",
     },
     {
-        "title": "Fitness Workouts",
-        "content": "Workout routines, tips, and exercises to help you stay fit and active."
+        "title": "National Geographic",
+        "url": "https://www.nationalgeographic.com",
+        "content": "Magazine and website about science, history, and nature.",
     },
     {
-        "title": "Entertainment News",
-        "content": "Stay informed about the latest in entertainment news, celebrity interviews, and more."
+        "title": "YouTube",
+        "url": "https://www.youtube.com",
+        "content": "Online video sharing platform.",
     },
     {
-        "title": "Science Discoveries",
-        "content": "Explore groundbreaking discoveries and research in the field of science."
+        "title": "TED Talks",
+        "url": "https://www.ted.com",
+        "content": "Inspirational talks on a wide range of topics by leading experts.",
     },
     {
-        "title": "Fashion Trends",
-        "content": "Get the latest updates on fashion trends, styles, and runway collections."
+        "title": "Coursera",
+        "url": "https://www.coursera.org",
+        "content": "Online learning platform with courses from top universities and companies.",
     },
     {
-        "title": "Home Decor Ideas",
-        "content": "Discover inspiration and ideas for decorating your home in style."
+        "title": "IMDb",
+        "url": "https://www.imdb.com",
+        "content": "Website with information about movies, TV shows, and actors.",
     },
     {
-        "title": "Personal Finance Tips",
-        "content": "Learn strategies for managing your finances, budgeting, and investing wisely."
+        "title": "The Verge",
+        "url": "https://www.verge.com",
+        "content": "Technology news website covering gadgets, apps, games, and the internet.",
     },
     {
-        "title": "Gardening Advice",
-        "content": "Tips, tricks, and advice for cultivating a beautiful and productive garden."
+        "title": "Reddit",
+        "url": "https://www.reddit.com",
+        "content": "Social news aggregation and discussion website.",
     },
     {
-        "title": "DIY Projects",
-        "content": "Step-by-step guides and ideas for fun and creative DIY projects."
+        "title": "MIT Technology Review",
+        "url": "https://www.technologyreview.com",
+        "content": "Magazine and website focusing on the latest developments in technology.",
     },
     {
-        "title": "Parenting Tips",
-        "content": "Helpful advice and tips for raising happy, healthy children."
+        "title": "Codecademy",
+        "url": "https://www.codecademy.com",
+        "content": "Online platform with interactive coding tutorials in various languages.",
     },
     {
-        "title": "Car Reviews",
-        "content": "Reviews, ratings, and insights on the latest car models and trends."
+        "title": "Duolingo",
+        "url": "https://www.duolingo.com",
+        "content": "Free language learning app that uses gamification to make learning fun.",
     },
     {
-        "title": "Music Reviews",
-        "content": "Discover new music releases, album reviews, and artist interviews."
+        "title": "arXiv",
+        "url": "https://arxiv.org",
+        "content": "Online repository for scientific research papers.",
     },
     {
-        "title": "Yoga Practice",
-        "content": "Guided yoga routines and poses for relaxation, flexibility, and strength."
+        "title": "Project Gutenberg",
+        "url": "https://www.gutenberg.org",
+        "content": "Volunteer effort to digitize and archive cultural works, especially books.",
     },
     {
-        "title": "Healthy Snack Ideas",
-        "content": "Nutritious and tasty snack ideas to satisfy your cravings and fuel your day."
+        "title": "GitHub Pages",
+        "url": "https://pages.github.com",
+        "content": "Service to create and host a website using Git.",
     },
     {
-        "title": "Pet Care Tips",
-        "content": "Advice on caring for your beloved pets, including nutrition, grooming, and training."
+        "title": "Stack Overflow Documentation",
+        "url": "https://developer.stackoverflow.com",
+        "content": "Collection of technical documentation written by developers.",
     },
     {
-        "title": "Home Cooking Recipes",
-        "content": "Delicious and easy-to-make recipes for home-cooked meals the whole family will love."
+        "title": "Khan Academy Kids",
+        "url": "https://www.khanacademy.org/kids",
+        "content": "Free online learning platform designed for children.",
     },
     {
-        "title": "Space Exploration News",
-        "content": "Stay updated on the latest news and discoveries from space exploration missions."
+        "title": "Reuters",
+        "url": "https://www.reuters.com",
+        "content": "International news agency known for its reliable and unbiased reporting.",
     },
     {
-        "title": "Job Search Advice",
-        "content": "Tips, resources, and strategies to help you find and land your dream job."
+        "title": "CodePen",
+        "url": "https://codepen.io",
+        "content": "Platform to experiment, test, and showcase front-end code snippets.",
     },
     {
-        "title": "Healthy Eating Habits",
-        "content": "Learn about the principles of healthy eating and how to develop good dietary habits."
+        "title": "Evernote",
+        "url": "https://www.evernote.com",
+        "content": "App for note-taking, organizing ideas, and managing projects.",
     },
     {
-        "title": "DIY Home Improvement",
-        "content": "Projects, tips, and tutorials for improving your home's appearance and functionality."
+        "title": "Dropbox",
+        "url": "https://www.dropbox.com",
+        "content": "File hosting service for storing and sharing documents, photos, and videos.",
     },
     {
-        "title": "Gaming News",
-        "content": "Latest updates, reviews, and insights from the world of video games and gaming culture."
+        "title": "Netflix",
+        "url": "https://www.netflix.com",
+        "content": "Subscription-based streaming service offering movies, TV shows, documentaries, and more.",
     },
     {
-        "title": "Self-Care Practices",
-        "content": "Discover self-care routines and practices to promote mental, emotional, and physical well-being."
+        "title": "Pinterest",
+        "url": "https://www.pinterest.com",
+        "content": "Visual discovery platform for finding ideas, inspiration, and tutorials.",
     },
     {
-        "title": "Travel Guides",
-        "content": "Comprehensive guides to popular travel destinations, attractions, and activities."
+        "title": "WhatsApp",
+        "url": "https://www.whatsapp.com",
+        "content": "Messaging app for sending and receiving messages, photos, videos, and voice notes.",
     },
     {
-        "title": "Financial Planning Advice",
-        "content": "Strategies and tips for effective financial planning, saving, and investing for the future."
+        "title": "Instagram",
+        "url": "https://www.instagram.com",
+        "content": "Photo and video sharing social network for connecting with friends and following interests.",
     },
     {
-        "title": "Healthy Dessert Recipes",
-        "content": "Indulgent yet nutritious dessert recipes to satisfy your sweet tooth guilt-free."
+        "title": "Twitter",
+        "url": "https://twitter.com",
+        "content": "Social media platform for sharing short messages (tweets) and following news and trends.",
     },
     {
-        "title": "Cocktail Recipes",
-        "content": "Craft cocktail recipes for every occasion, from classic favorites to creative concoctions."
+        "title": "Tesla",
+        "url": "https://www.tesla.com",
+        "content": "Electric vehicle and clean energy company focused on sustainable transportation.",
     },
     {
-        "title": "Home Workout Tips",
-        "content": "Tips, routines, and exercises for effective workouts you can do from the comfort of your home."
+        "title": "WebMD",
+        "url": "https://www.webmd.com",
+        "content": "Website providing information and resources for health and medical conditions.",
     },
     {
-        "title": "DIY Beauty Hacks",
-        "content": "Simple and budget-friendly beauty hacks for skincare, makeup, and haircare."
+        "title": "Skillshare",
+        "url": "https://www.skillshare.com",
+        "content": "Online learning platform offering classes on creative and professional skills.",
     },
     {
-        "title": "Mindfulness Meditation",
-        "content": "Guided meditations and practices for cultivating mindfulness and inner peace."
+        "title": "Udacity",
+        "url": "https://www.udacity.com",
+        "content": "Platform offering online courses and nanodegrees to prepare for tech careers.",
     },
     {
-        "title": "Healthy Breakfast Ideas",
-        "content": "Quick and nutritious breakfast ideas to start your day off right."
+        "title": "Stack Exchange Network",
+        "url": "https://stackexchange.com",
+        "content": "Network of question-and-answer sites for various topics, including Stack Overflow.",
     },
     {
-        "title": "Photography Tips",
-        "content": "Techniques, tutorials, and advice for improving your photography skills."
+        "title": "HackerRank",
+        "url": "https://www.hackerrank.com",
+        "content": "Platform for practicing coding skills, competing in challenges, and preparing for coding interviews.",
     },
     {
-        "title": "Travel Photography Inspiration",
-        "content": "Stunning travel photography to inspire your next adventure."
+        "title": "TED-Ed",
+        "url": "https://www.youtube.com/user/TEDEducation",
+        "content": "YouTube channel from TED Talks offering educational animated videos on various subjects.",
     },
     {
-        "title": "Home Organization Hacks",
-        "content": "Creative solutions and tips for organizing your home and decluttering your space."
+        "title": "LiveScience",
+        "url": "https://www.livescience.com",
+        "content": "Website covering science news, discoveries, and research in a clear and engaging way.",
     },
     {
-        "title": "Nature Photography",
-        "content": "Breathtaking images of nature's beauty captured by talented photographers."
+        "title": "Business Insider",
+        "url": "https://www.businessinsider.com",
+        "content": "Website providing news, analysis, and insights on business, finance, and technology.",
     },
     {
-        "title": "DIY Home Decor Projects",
-        "content": "Unique and stylish DIY home decor projects to personalize your living space."
+        "title": "Financial Times",
+        "url": "https://www.ft.com",
+        "content": "Subscription-based financial news website known for its global business coverage.",
     },
     {
-        "title": "Healthy Lunch Recipes",
-        "content": "Nutritious and satisfying lunch recipes to fuel your day and keep you energized."
+        "title": "Quartz",
+        "url": "https://qz.com",
+        "content": "Website providing innovative and business-focused news on a global scale.",
     },
     {
-        "title": "Financial Literacy Resources",
-        "content": "Educational resources and tools to improve your financial literacy and money management skills."
+        "title": "The Guardian",
+        "url": "https://www.theguardian.com",
+        "content": "British daily newspaper known for its liberal and progressive stance on news.",
     },
     {
-        "title": "Pet Adoption Tips",
-        "content": "Advice and guidance for adopting and caring for a new pet."
+        "title": "The Washington Post",
+        "url": "https://www.washingtonpost.com",
+        "content": "American daily newspaper known for its in-depth reporting and investigative journalism.",
     },
     {
-        "title": "Family-Friendly Activities",
-        "content": "Fun and engaging activities for the whole family to enjoy together."
+        "title": "The Atlantic",
+        "url": "https://www.theatlantic.com",
+        "content": "American magazine known for its in-depth articles on politics, society, and culture.",
     },
     {
-        "title": "Healthy Smoothie Recipes",
-        "content": "Delicious and nutritious smoothie recipes for a refreshing and energizing boost."
+        "title": "The New Yorker",
+        "url": "https://www.newyorker.com",
+        "content": "American weekly magazine known for its long-form journalism, fiction, and cartoons.",
     },
     {
-        "title": "DIY Crafts",
-        "content": "Creative and inspiring DIY craft projects for all skill levels."
+        "title": "The Economist (Business)",
+        "url": "https://www.economist.com/business",
+        "content": "Business section of The Economist website, focusing on global business news and analysis.",
     },
     {
-        "title": "Home Gardening Tips",
-        "content": "Helpful tips and advice for successful home gardening and plant care."
+        "title": "Harvard Business Review",
+        "url": "https://hbr.org",
+        "content": "Management magazine and website offering insights and best practices for business leaders.",
     },
     {
-        "title": "Budget Travel Tips",
-        "content": "Strategies and advice for traveling on a budget without sacrificing experiences."
+        "title": "Forbes",
+        "url": "https://www.forbes.com",
+        "content": "Business magazine and website focusing on finance, investing, entrepreneurship, and leadership.",
     },
     {
-        "title": "Home Office Ideas",
-        "content": "Inspiring ideas and tips for creating a functional and stylish home office space."
+        "title": "Fast Company",
+        "url": "https://www.fastcompany.com",
+        "content": "Magazine and website offering articles and insights on innovation, technology, and leadership.",
     },
     {
-        "title": "Financial Planning for Retirement",
-        "content": "Guidance and resources for planning and preparing for a secure retirement."
+        "title": "Inc.",
+        "url": "https://www.inc.com",
+        "content": "Magazine and website focused on entrepreneurship, startups, and small business growth.",
     },
     {
-        "title": "DIY Hair Care Recipes",
-        "content": "Natural and homemade hair care recipes for healthier, more vibrant hair."
+        "title": "Bloomberg",
+        "url": "https://www.bloomberg.com",
+        "content": "Financial news service and media company providing in-depth coverage of business, finance, and markets.",
     },
     {
-        "title": "Stress Management Techniques",
-        "content": "Effective strategies and techniques for managing stress and promoting relaxation."
+        "title": "The Motley Fool",
+        "url": "https://www.fool.com",
+        "content": "Website offering financial advice, stock market analysis, and investing education.",
     },
     {
-        "title": "Healthy Dinner Recipes",
-        "content": "Wholesome and delicious dinner recipes to enjoy with family and friends."
+        "title": "CNBC",
+        "url": "https://www.cnbc.com",
+        "content": "Financial news cable television channel and website providing business news, market analysis, and investment information.",
     },
     {
-        "title": "Outdoor Adventure Ideas",
-        "content": "Exciting and adventurous outdoor activities to explore and enjoy nature."
+        "title": "NPR",
+        "url": "https://www.npr.org",
+        "content": "Non-profit media organization providing news, talk shows, and music programming.",
     },
     {
-        "title": "Investing Strategies",
-        "content": "Insights, tips, and strategies for successful investing and wealth building."
+        "title": "BBC World Service",
+        "url": "https://www.bbc.com/worldservice",
+        "content": "International radio network from the BBC, providing news and information in multiple languages.",
     },
     {
-        "title": "DIY Home Renovation Projects",
-        "content": "Project ideas and tips for renovating and remodeling your home."
+        "title": "The New Yorker Fiction",
+        "url": "https://www.newyorker.com/fiction",
+        "content": "Fiction section of The New Yorker website, featuring short stories by renowned authors.",
     },
-    {
-        "title": "Family Meal Planning",
-        "content": "Helpful tips and resources for planning nutritious and budget-friendly family meals."
-    },
-    {
-        "title": "Green Living Tips",
-        "content": "Practical advice and tips for adopting eco-friendly and sustainable living habits."
-    },
-    {
-        "title": "Personal Development Resources",
-        "content": "Tools and resources for personal growth, self-improvement, and achieving goals."
-    },
-    {
-        "title": "DIY Skincare Recipes",
-        "content": "Natural and homemade skincare recipes for healthier, glowing skin."
-    },
-    {
-        "title": "Gourmet Cooking Techniques",
-        "content": "Masterful techniques and tips for elevating your culinary skills and creating gourmet dishes."
-    },
-    {
-        "title": "Productivity Hacks",
-        "content": "Strategies and techniques for maximizing productivity and efficiency in daily life."
-    },
-    {
-        "title": "Home Exercise Routines",
-        "content": "Effective and convenient home exercise routines for staying active and fit."
-    },
-    {
-        "title": "Personal Finance Education",
-        "content": "Educational resources and guides to help you improve your financial literacy."
-    },
-    {
-        "title": "DIY Home Cleaning Solutions",
-        "content": "Natural and homemade cleaning solutions for a clean and healthy home."
-    },
-    {
-        "title": "Healthy Baking Recipes",
-        "content": "Wholesome and delicious baking recipes for guilt-free treats."
-    },
-    {
-        "title": "Parenting Advice",
-        "content": "Practical tips and advice for navigating the joys and challenges of parenthood."
-    },
-    {
-        "title": "Hiking Trails",
-        "content": "Discover scenic hiking trails and outdoor adventures in your area."
-    },
-    {
-        "title": "Money-Saving Tips",
-        "content": "Smart strategies and tips for saving money and managing your finances wisely."
-    },
-    {
-        "title": "Home Improvement Projects",
-        "content": "Inspiring ideas and DIY projects for enhancing your home's appearance and functionality."
-    },
-    {
-        "title": "Cooking Techniques",
-        "content": "Essential techniques and tips for mastering the art of cooking."
-    },
-    {
-        "title": "DIY Beauty Products",
-        "content": "Homemade beauty products and remedies for natural skincare and haircare."
-    },
-    {
-        "title": "Personal Growth Strategies",
-        "content": "Strategies and resources for achieving personal growth and self-improvement."
-    },
-    {
-        "title": "Nutrition Education",
-        "content": "Information and resources to help you make informed decisions about nutrition and healthy eating."
-    },
-    {
-        "title": "Home Decorating Ideas",
-        "content": "Inspiring ideas and tips for decorating your home with style and personality."
-    },
-    {
-        "title": "Parenting Strategies",
-        "content": "Effective parenting strategies and techniques for raising happy, healthy children."
-    },
-    {
-        "title": "Healthy Meal Planning",
-        "content": "Tips and resources for planning and preparing nutritious meals for you and your family."
-    },
-    {
-        "title": "Travel Photography Tips",
-        "content": "Expert tips and techniques for capturing stunning travel photos."
-    },
-    {
-        "title": "Home Gardening Ideas",
-        "content": "Creative ideas and tips for designing and maintaining a beautiful garden."
-    },
-    {
-        "title": "DIY Home Decor Ideas",
-        "content": "Creative and budget-friendly ideas for decorating your home."
-    },
-    {
-        "title": "Stress Relief Techniques",
-        "content": "Relaxation techniques and strategies for reducing stress and promoting well-being."
-    },
-    {
-        "title": "Healthy Snack Recipes",
-        "content": "Nutritious and satisfying snack recipes for guilt-free munching."
-    },
-    {
-        "title": "Personal Finance Tips and Tricks",
-        "content": "Practical tips and tricks for managing your finances and achieving financial goals."
-    },
-    {
-        "title": "DIY Skincare Tips",
-        "content": "Expert tips and tricks for maintaining healthy, radiant skin with DIY skincare."
-    },
-    {
-        "title": "Home Renovation Ideas",
-        "content": "Inspiring ideas and tips for renovating and remodeling your home."
-    },
-    {
-        "title": "Parenting Resources",
-        "content": "Useful resources and tools for parents navigating the challenges of raising children."
-    },
-    {
-        "title": "Budget Travel Ideas",
-        "content": "Budget-friendly travel ideas and tips for exploring new destinations without breaking the bank."
-    },
-    {
-        "title": "Home Workout Ideas",
-        "content": "Creative and effective workout ideas for staying fit and active at home."
-    },
-    {
-        "title": "Financial Planning Strategies",
-        "content": "Strategies and techniques for effective financial planning and wealth management."
-    },
-    {
-        "title": "DIY Hair Care Tips",
-        "content": "Expert tips and tricks for healthy, beautiful hair with DIY hair care."
-    },
-    {
-        "title": "Mindfulness Practices",
-        "content": "Practical mindfulness practices and techniques for living with intention and awareness."
-    },
-    {
-        "title": "Healthy Breakfast Recipes",
-        "content": "Delicious and nutritious breakfast recipes to start your day off right."
-    },
-    {
-        "title": "Photography Techniques",
-        "content": "Tips, tricks, and techniques for capturing stunning photographs."
-    },
-    {
-        "title": "Spaghetti Carbonara",
-        "content": "1. Cook spaghetti according to package instructions. In a separate pan, cook diced pancetta until crispy. Mix cooked spaghetti with beaten eggs, grated Parmesan cheese, and cooked pancetta. Serve immediately with additional cheese and black pepper."
-    },
-    {
-        "title": "Chicken Alfredo",
-        "content": "1. Cook fettuccine according to package instructions. In a pan, cook diced chicken until no longer pink. Add heavy cream and Parmesan cheese to the pan, simmer until thickened. Toss cooked fettuccine with the sauce. Serve hot."
-    },
-    {
-        "title": "Vegetable Stir-Fry",
-        "content": "1. Heat oil in a wok or skillet. Add chopped vegetables (such as bell peppers, broccoli, carrots, and snap peas) and stir-fry until tender-crisp. Season with soy sauce, garlic, and ginger. Serve over cooked rice or noodles."
-    },
-    {
-        "title": "Classic Caesar Salad",
-        "content": "1. In a large salad bowl, combine torn romaine lettuce leaves, Caesar dressing, grated Parmesan cheese, and croutons. Toss until well coated. Serve immediately as a side dish or topped with grilled chicken for a main course."
-    },
-    {
-        "title": "Margherita Pizza",
-        "content": "1. Preheat your oven to 475°F (245°C). Roll out pizza dough and place it on a baking sheet. Spread pizza sauce over the dough, then top with slices of fresh mozzarella cheese and fresh basil leaves. Bake for 10-12 minutes until the crust is golden and the cheese is bubbly."
-    },
-    {
-        "title": "Beef Tacos",
-        "content": "1. Cook ground beef in a skillet over medium heat until browned. Season with taco seasoning. Serve beef in taco shells with shredded lettuce, diced tomatoes, shredded cheese, and salsa. Optional toppings include sour cream and guacamole."
-    },
-    {
-        "title": "Chicken Caesar Wrap",
-        "content": "1. Lay a tortilla flat. Spread Caesar dressing over the tortilla. Add slices of grilled chicken, romaine lettuce, grated Parmesan cheese, and croutons. Roll up the tortilla tightly. Serve immediately or wrap in foil for later."
-    },
-    {
-        "title": "Pasta Primavera",
-        "content": "1. Cook pasta according to package instructions. In a skillet, sauté mixed vegetables (such as bell peppers, zucchini, cherry tomatoes, and mushrooms) in olive oil until tender. Toss cooked pasta with the vegetables and a splash of pasta water. Season with salt, pepper, and grated Parmesan cheese."
-    },
-    {
-        "title": "Caprese Salad",
-        "content": "1. Arrange alternating slices of ripe tomatoes and fresh mozzarella cheese on a plate. Tuck fresh basil leaves in between the slices. Drizzle with balsamic glaze and extra virgin olive oil. Season with salt and pepper to taste."
-    },
-    {
-        "title": "Vegetable Lasagna",
-        "content": "1. Preheat your oven to 375°F (190°C). Layer cooked lasagna noodles with marinara sauce, a mixture of ricotta cheese and spinach, and slices of roasted vegetables (such as zucchini, eggplant, and bell peppers). Repeat the layers until the baking dish is full. Top with mozzarella cheese and bake for 30-35 minutes until bubbly."
-    },
-    {
-        "title": "Classic Beef Burger",
-        "content": "1. Preheat your grill to medium-high heat. Form ground beef into patties and season with salt and pepper. Grill for about 4-5 minutes per side, or until desired doneness. Serve on toasted hamburger buns with lettuce, tomato, onion, and your favorite condiments."
-    },
-    {
-        "title": "Pesto Pasta",
-        "content": "1. Cook pasta according to package instructions. In a blender or food processor, blend together fresh basil leaves, pine nuts, garlic, Parmesan cheese, and olive oil until smooth. Toss cooked pasta with pesto sauce and cherry tomatoes. Serve with extra Parmesan cheese."
-    },
-    {
-        "title": "Mushroom Risotto",
-        "content": "1. In a saucepan, heat chicken or vegetable broth until simmering. In a separate pan, sauté diced onions and minced garlic in olive oil until softened. Add Arborio rice and cook for a few minutes until translucent. Gradually add the simmering broth, stirring frequently, until the rice is creamy and cooked through. Stir in sautéed mushrooms, grated Parmesan cheese, and chopped parsley. Serve hot."
-    },
-    {
-        "title": "Fettuccine Alfredo",
-        "content": "1. Cook fettuccine according to package instructions. In a saucepan, melt butter over medium heat. Add heavy cream and bring to a simmer. Stir in grated Parmesan cheese until melted and smooth. Toss cooked fettuccine with the Alfredo sauce. Serve hot, garnished with chopped parsley."
-    },
-    {
-        "title": "Garlic Shrimp Scampi",
-        "content": "1. In a skillet, heat olive oil over medium heat. Add minced garlic and cook until fragrant. Add shrimp and cook until pink and opaque. Season with salt, pepper, and red pepper flakes. Stir in white wine and lemon juice. Serve shrimp over cooked spaghetti or linguine, garnished with chopped parsley."
-    },
-    {
-        "title": "Beef Stir-Fry",
-        "content": "1. In a wok or skillet, heat oil over high heat. Add thinly sliced beef and stir-fry until browned. Remove beef from the pan. Add sliced bell peppers, onions, and broccoli florets to the pan. Stir-fry until tender-crisp. Return beef to the pan and add soy sauce, garlic, and ginger. Cook for a few more minutes until heated through. Serve hot over cooked rice."
-    },
-    {
-        "title": "Teriyaki Chicken",
-        "content": "1. Marinate chicken breasts in teriyaki sauce for at least 30 minutes. Grill or broil chicken until cooked through. Serve hot, drizzled with extra teriyaki sauce and garnished with chopped green onions and sesame seeds. Serve with steamed rice and vegetables."
-    },
-    {
-        "title": "Baked Salmon",
-        "content": "1. Preheat your oven to 375°F (190°C). Place salmon fillets on a baking sheet lined with parchment paper. Drizzle with olive oil and season with salt, pepper, and lemon zest. Bake for 12-15 minutes, or until the salmon is cooked through and flakes easily with a fork. Serve hot, garnished with fresh herbs and lemon wedges."
-    },
-    {
-        "title": "Margarita Cocktail",
-        "content": "1. Rub the rim of a glass with a lime wedge, then dip it in salt to coat. Fill the glass with ice cubes. In a shaker, combine tequila, lime juice, and triple sec. Shake well and pour over the ice. Garnish with a lime wedge. Enjoy!"
-    },
-    {
-        "title": "Chocolate Chip Cookies",
-        "content": "1. Preheat your oven to 375°F (190°C). In a mixing bowl, cream together softened butter, white sugar, and brown sugar until light and fluffy. Beat in eggs one at a time, then stir in vanilla extract. Gradually add flour mixture, then fold in chocolate chips. Drop by rounded spoonfuls onto ungreased baking sheets. Bake for 8 to 10 minutes until golden brown. Cool on wire racks."
-    },
-    {
-        "title": "Blueberry Pancakes",
-        "content": "1. In a mixing bowl, combine flour, sugar, baking powder, and salt. In a separate bowl, whisk together milk, melted butter, and eggs. Stir wet ingredients into dry ingredients until just combined. Gently fold in fresh blueberries. Pour batter onto a hot greased griddle and cook until bubbles form on the surface. Flip and cook until golden brown on the other side. Serve hot with maple syrup."
-    },
-    {
-        "title": "Chicken Noodle Soup",
-        "content": "1. In a large pot, heat olive oil over medium heat. Add diced onions, carrots, and celery, and sauté until softened. Add minced garlic and cook until fragrant. Pour in chicken broth and bring to a simmer. Add cooked shredded chicken, egg noodles, and chopped fresh herbs. Simmer until noodles are cooked through. Season with salt and pepper to taste. Serve hot."
-    },
-    {
-        "title": "Egg Fried Rice",
-        "content": "1. Cook white rice according to package instructions and let it cool. In a wok or skillet, heat oil over high heat. Add beaten eggs and scramble until cooked. Add cooked rice to the pan and stir-fry until heated through. Stir in chopped green onions, soy sauce, and cooked peas and carrots. Cook for a few more minutes until everything is well combined. Serve hot."
-    },
-    {
-        "title": "Spinach and Feta Stuffed Chicken",
-        "content": "1. Preheat your oven to 375°F (190°C). Butterfly chicken breasts and season with salt and pepper. Mix together chopped spinach, crumbled feta cheese, minced garlic, and dried oregano. Spread the spinach mixture over the chicken breasts, then roll up and secure with toothpicks. Place chicken in a baking dish and bake for 25-30 minutes, or until cooked through. Serve hot."
-    },
-    {
-        "title": "Mango Salsa",
-        "content": "1. In a bowl, combine diced mangoes, diced red bell peppers, chopped red onions, chopped cilantro, minced jalapeño, lime juice, and salt. Stir until well combined. Taste and adjust seasoning as needed. Serve chilled with tortilla chips or as a topping for grilled fish or chicken."
-    },
-    {
-        "title": "Guacamole",
-        "content": "1. In a bowl, mash ripe avocados with a fork until smooth but still chunky. Stir in diced tomatoes, diced onions, minced garlic, chopped cilantro, lime juice, and salt. Mix until well combined. Taste and adjust seasoning as needed. Serve immediately with tortilla chips or as a topping for tacos or nachos."
-    },
-    {
-        "title": "Vegetarian Chili",
-        "content": "1. In a large pot, heat oil over medium heat. Add diced onions, bell peppers, and carrots, and sauté until softened. Stir in minced garlic, chili powder, cumin, and oregano, and cook until fragrant. Add canned diced tomatoes, tomato sauce, cooked beans (such as kidney beans, black beans, and pinto beans), and vegetable broth. Simmer for 20-30 minutes, stirring occasionally. Serve hot with your favorite toppings."
-    },
-    {
-        "title": "Peanut Butter Banana Smoothie",
-        "content": "1. In a blender, combine ripe bananas, creamy peanut butter, Greek yogurt, milk, and a handful of ice cubes. Blend until smooth and creamy. Taste and adjust sweetness if needed by adding honey or maple syrup. Pour into glasses and serve immediately."
-    },
-    {
-        "title": "Classic Margherita Pizza",
-        "content": "1. Preheat your oven to 500°F (260°C) or as high as it will go. Stretch pizza dough into a circle and place it on a baking sheet or pizza stone. Spread pizza sauce over the dough, then arrange slices of fresh mozzarella cheese and fresh basil leaves on top. Drizzle with olive oil and sprinkle with salt. Bake for 10-12 minutes, until the crust is golden brown and the cheese is bubbly. Serve hot."
-    },
-    {
-        "title": "Beef Tacos",
-        "content": "1. In a skillet over medium heat, cook ground beef until browned and crumbled. Drain excess fat. Stir in taco seasoning and water according to package instructions. Simmer for 5 minutes. Warm taco shells in the oven or microwave. Fill each shell with cooked beef and top with shredded lettuce, diced tomatoes, shredded cheese, and other desired toppings."
-    },
-    {
-        "title": "Chicken Quesadillas",
-        "content": "1. In a skillet over medium heat, cook diced chicken until no longer pink. Remove from skillet and set aside. In the same skillet, add a tortilla. Sprinkle one half of the tortilla with shredded cheese, cooked chicken, diced onions, and sliced jalapeños. Fold the tortilla in half and cook until golden brown on both sides. Repeat with remaining ingredients. Cut quesadillas into wedges and serve with salsa and sour cream."
-    },
-    {
-        "title": "Creamy Tomato Soup",
-        "content": "1. In a large pot, heat olive oil over medium heat. Add diced onions and cook until softened. Add minced garlic and cook until fragrant. Stir in canned crushed tomatoes, chicken broth, dried basil, dried oregano, and a pinch of sugar. Simmer for 15-20 minutes. Blend the soup until smooth using an immersion blender or regular blender. Stir in heavy cream and heat through. Season with salt and pepper to taste. Serve hot with a sprinkle of fresh basil leaves."
-    }
 ]
 
 inverted_index = build_inverted_index(documents)

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ query }} • Search App</title>
     <link rel="stylesheet" href="../static/search.css">
+    <script defer src="../static/search.js"></script>
+    <link rel="shortcut icon" href="../static/qmul.png" type="image/x-icon">
 </head>
 
 <body>
@@ -16,7 +18,7 @@
             <div class="searchform-container">
                 <form id="searchform" method="GET" action="/search">
                     <input type="text" name="q" id="searchbox" class="font" placeholder="Search the database..."
-                        autofocus="" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
+                        autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
                         aria-label="Search" title="Search" maxlength="2048" enterkeyhint="search" value="{{query}}"
                         required>
                     <div class="searchform-actions">
@@ -38,6 +40,10 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                         </button>
+                    </div>
+                    <div id="autocomplete">
+                        <div class="suggestions">
+                        </div>
                     </div>
                 </form>
             </div>
@@ -66,7 +72,7 @@
             {% if results.total_results > 0 %}
             {% for result in results.results %}
             <div class="searchresult-entry">
-                <a class="entry-title">
+                <a class="entry-title" href="{{ result.url }}" target="_blank">
                     <div class="page-title">{{ result.title }}</div>
                 </a>
                 <div class="snippet-content">

@@ -4,9 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search App</title>
     <link rel="stylesheet" href="../static/home.css">
+    <script defer src="../static/search.js"></script>
+    <link rel="shortcut icon" href="../static/qmul.png" type="image/x-icon">
 </head>
 <body>
     <div class="home-wrapper">
+        <div class="waves top-wave"></div>
+        <div class="waves bottom-wave"></div>
         <main>
             <div class="searchbar-wrapper">
                 <a id="logo" href="/">
@@ -14,9 +18,9 @@
                     <p>Search Engine</p>
                 </a>
                 <div class="searchform-container">
-                    <form id="searchform" method="GET" action="/search">
+                    <form id="searchform" class="" method="GET" action="/search">
                         <input type="text" name="q" id="searchbox" class="font" placeholder="Search the database..." 
-                        autofocus="" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
+                        autofocus autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
                         aria-label="Search" title="Search" maxlength="2048" enterkeyhint="search" required>
                         <div class="searchform-actions">
                             <button id="clear-query-button" type="reset" class="searchform-actions-button" aria-label="Clear">
@@ -31,16 +35,13 @@
                                 </svg>
                             </button>
                         </div>
+                        <div id="autocomplete">
+                            <div class="suggestions">
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </main>
     </div>
-    <!-- <script>
-        document.getElementById("search-input").addEventListener('keypress', e => {
-            if(e.keyCode === 13){
-                window.location.href = `/search?q=${e.target.value}`
-            }
-        })
-    </script> -->
 </body>
