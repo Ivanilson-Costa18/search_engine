@@ -8,7 +8,7 @@ Welcome to the Search Engine project! This project aims to implement a simple se
 - Output: Presents search results to the user.
 
 ## Architecture
-The search engine follows a modular architecture:
+The search engine uses the following architecture:
 ``` rust
 | User Input | -> | Query Processor | -> | Indexing | -> | Ranking | -> | Output |
 ```
@@ -54,6 +54,8 @@ python3 run.py #development run
 uwsgi --http 127.0.0.1:8000 --master -p 4 -w app:app #production run
 ```
 Access the search engine interface via your web browser at http://127.0.0.1:5000 (DEV) -  http://127.0.0.1:8000 (PROD).
+
+Also available at [Search Engine](https://search-engine-q15e.onrender.com/) - ![Website](https://img.shields.io/website?url=https%3A%2F%2Fsearch-engine-q15e.onrender.com%2F&cacheSeconds=86400)
 
 ## License
 This project is licensed under the MIT License.
